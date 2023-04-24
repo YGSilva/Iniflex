@@ -19,6 +19,4 @@ public class PersonService {
 	public List<Person> findAll() {
 		return repository.findAll();
 	}
-	
-	
 }
