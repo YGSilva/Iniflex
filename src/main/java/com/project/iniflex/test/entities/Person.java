@@ -5,18 +5,16 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 
 @Entity
-@Table(name="tb_pessoa")
-public class Person implements Serializable{
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public abstract class Person implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idPerson;
 	private String namePerson;
 	private LocalDateTime dtBirth;

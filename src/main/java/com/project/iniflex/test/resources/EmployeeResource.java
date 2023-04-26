@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.iniflex.test.dto.PersonDTO;
-import com.project.iniflex.test.services.PersonService;
+import com.project.iniflex.test.dto.EmployeeDTO;
+import com.project.iniflex.test.services.EmployeeService;
 
 @RestController
-@RequestMapping(value="/people")
-public class PersonResource {
-	
+@RequestMapping(value = "/employees")
+public class EmployeeResource {
+
 	@Autowired
-	private PersonService service;
-	
+	private EmployeeService service;
+
 	@GetMapping
-	public ResponseEntity<List<PersonDTO>> findAll() {
-		List<PersonDTO> list = service.findAll();
+	public ResponseEntity<List<EmployeeDTO>> findAll() {
+		List<EmployeeDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@DeleteMapping(value="/{id}")
-	public ResponseEntity<PersonDTO> deletePerson(@PathVariable Long id){
+	public ResponseEntity<EmployeeDTO> deleteEmployee(@PathVariable Long id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
- 	
+
 }

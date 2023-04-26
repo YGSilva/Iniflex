@@ -8,25 +8,25 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.project.iniflex.test.dto.PersonDTO;
-import com.project.iniflex.test.entities.Person;
-import com.project.iniflex.test.repositories.PersonRepository;
+import com.project.iniflex.test.dto.EmployeeDTO;
+import com.project.iniflex.test.entities.Employee;
+import com.project.iniflex.test.repositories.EmployeeRepository;
 import com.project.iniflex.test.services.exceptions.DatabaseException;
 
 @Service
-public class PersonService {
+public class EmployeeService {
 
 	@Autowired
-	private PersonRepository repository;
-	
-	@Transactional(readOnly = true)
-	public List<PersonDTO> findAll() {
-		List<Person> list = repository.findAll();
-		
-		//Transforma a lista do tipo Person em PersonDTO
-		return list.stream().map(x -> new PersonDTO(x)).collect(Collectors.toList());		
-	}
+	private EmployeeRepository repository;
 
+	@Transactional(readOnly = true)
+	public List<EmployeeDTO> findAll() {
+		List<Employee> list = repository.findAll();
+		return list.stream()
+				.map(x -> new EmployeeDTO(x.getIdPerson(), x.getNamePerson(), x.getDtBirth(), x))
+				.collect(Collectors.toList());
+	}
+	
 	public void delete(Long id) { 
 		try {
 			repository.deleteById(id);
@@ -34,4 +34,5 @@ public class PersonService {
 			throw new DatabaseException("Violação de Integridade");
 		}
 	}
+
 }
