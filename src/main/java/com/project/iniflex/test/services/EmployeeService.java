@@ -15,7 +15,7 @@ import com.project.iniflex.test.services.exceptions.DatabaseException;
 
 @Service
 public class EmployeeService {
-
+	
 	@Autowired
 	private EmployeeRepository repository;
 
@@ -23,8 +23,36 @@ public class EmployeeService {
 	public List<EmployeeDTO> findAll() {
 		List<Employee> list = repository.findAll();
 		return list.stream()
-				.map(x -> new EmployeeDTO(x.getIdPerson(), x.getNamePerson(), x.getDtBirth(), x))
+				.map(x -> new EmployeeDTO(x.getIdPerson(), x.getNamePerson(), (x.getDtBirth()), x))
 				.collect(Collectors.toList());
+	}
+	
+	public List<Employee> groupByFunction() {
+		return repository.getGroupByFunction();
+	}
+	
+	public int updateSalary() {
+		return repository.updateSalary();
+	}
+	
+	public List<Employee> monthOfBirthDay() {
+		return repository.monthOfBirthDay();
+	}
+	
+	public List<Employee> alphabeticalOrder() {
+		return repository.alphabeticalOrder();
+	}
+	
+	public String olderEmployee() {
+		return repository.olderEmployee();
+	}
+	
+	public double sumSalary() {
+		return repository.sumSalary();
+	}
+	
+	public List<String> minSalary() {
+		return repository.minSalary();
 	}
 	
 	public void delete(Long id) { 

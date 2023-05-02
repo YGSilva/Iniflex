@@ -1,7 +1,10 @@
 package com.project.iniflex.test.entities;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -11,6 +14,7 @@ import jakarta.persistence.Table;
 public class Employee extends Person {
 	private static final long serialVersionUID = 1L;
 
+	@NumberFormat(pattern = ",##0,00", style = Style.PERCENT)
 	private BigDecimal salary;
 	private String function;
 
@@ -18,7 +22,7 @@ public class Employee extends Person {
 		super();
 	}
 
-	public Employee(Long idPerson, String namePerson, LocalDateTime dtBirth, BigDecimal salary, String function) {
+	public Employee(Long idPerson, String namePerson, LocalDate dtBirth, BigDecimal salary, String function) {
 		super(idPerson, namePerson, dtBirth);
 		this.salary = salary;
 		this.function = function;

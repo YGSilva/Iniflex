@@ -1,7 +1,10 @@
 package com.project.iniflex.test.dto;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
 
 import com.project.iniflex.test.entities.Employee;
 import com.project.iniflex.test.entities.Person;
@@ -9,6 +12,7 @@ import com.project.iniflex.test.entities.Person;
 public class EmployeeDTO extends Person {
 	private static final long serialVersionUID = 1L;
 
+	@NumberFormat(pattern = ",##0,00", style = Style.PERCENT)
 	private BigDecimal salary;
 	private String function;
 
@@ -16,10 +20,14 @@ public class EmployeeDTO extends Person {
 		super();
 	}
 
-	public EmployeeDTO(Long idPerson, String namePerson, LocalDateTime dtBirth, Employee entity) {
+	public EmployeeDTO(Long idPerson, String namePerson, LocalDate dtBirth, Employee entity) {
 		super(idPerson, namePerson, dtBirth);
 		this.salary = entity.getSalary();
 		this.function = entity.getFunction();
+	}
+
+	public EmployeeDTO(Employee entity) {
+
 	}
 
 	public BigDecimal getSalary() {

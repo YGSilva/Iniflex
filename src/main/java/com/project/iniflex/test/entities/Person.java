@@ -1,8 +1,10 @@
 package com.project.iniflex.test.entities;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -17,13 +19,14 @@ public abstract class Person implements Serializable{
 	@Id
 	private Long idPerson;
 	private String namePerson;
-	private LocalDateTime dtBirth;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "pt-BR", timezone = "UTC")
+	private LocalDate dtBirth;
 	
 	public Person() {
 		super();
 	}
 
-	public Person(Long idPerson, String namePerson, LocalDateTime dtBirth) {
+	public Person(Long idPerson, String namePerson, LocalDate dtBirth) {
 		super();
 		this.idPerson = idPerson;
 		this.namePerson = namePerson;
@@ -46,11 +49,11 @@ public abstract class Person implements Serializable{
 		this.namePerson = namePerson;
 	}
 
-	public LocalDateTime getDtBirth() {
+	public LocalDate getDtBirth() {
 		return dtBirth;
 	}
 
-	public void setDtBirth(LocalDateTime dtBirth) {
+	public void setDtBirth(LocalDate dtBirth) {
 		this.dtBirth = dtBirth;
 	}
 
