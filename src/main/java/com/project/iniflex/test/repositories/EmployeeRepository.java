@@ -34,6 +34,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 	@Query(value = "SELECT SUM(SALARY) FROM TB_EMPLOYEE", nativeQuery = true)
 	double sumSalary();
 	
-	@Query(value = "SELECT NAME_PERSON, (SALARY-1212) FROM TB_EMPLOYEE",nativeQuery = true)
+	@Query(value = "SELECT NAME_PERSON, TRUNC(SALARY/1212, 2) FROM TB_EMPLOYEE",nativeQuery = true)
 	List<String> minSalary();
 }
