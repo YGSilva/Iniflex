@@ -5,7 +5,7 @@
 
 Projetinho construido para um teste mão na massa para uma vaga de Desenvolvedor Java pela empresa [Projedata Informática](https://www.projedata.com.br).
 
-O projeto tinha como premissa a criação de um classe Pessoa e uma Funcionario estendendo a classe Pessoa fazendo as seguintes operações: 
+O projeto tem como premissa a criação de um classe Pessoa e uma Funcionario estendendo a classe Pessoa fazendo as seguintes operações: 
 
 3.1 – Inserir todos os funcionários, na mesma ordem e informações da tabela acima.
 
