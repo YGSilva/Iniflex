@@ -43,6 +43,8 @@ Foi utilizado o banco de dados H2, as informações para acesso estão no arquiv
 
 Os inserts na base se deu por meio do arquivo [import.sql](https://github.com/YGSilva/Iniflex/blob/master/src/main/resources/import.sql).
 
+As imagens com os testes feito via Postman estão na pasta [assets](https://github.com/YGSilva/Iniflex/tree/master/assets).
+
 # Tecnologias utilizadas
 ## Back end
 - Java
